@@ -29,4 +29,36 @@ package Tarea1;
 	        int nivelDificultad = seleccionarNivelDificultad();
 	        int tipoProblema = seleccionarTipoProblema();
 
-	       
+	        int preguntasCorrectas = 0;
+	        for (int i = 0; i < NUMERO_PREGUNTAS; i++) {
+	            if (realizarPregunta(nivelDificultad, tipoProblema)) {
+	                preguntasCorrectas++;
+	                System.out.println(obtenerResultadoPositivoAlazar());
+	            } else {
+	                System.out.println(obtenerResultadoNegativoAlazar());
+	            }
+	        }
+
+	        double porcentajeCorrectas = (preguntasCorrectas / (double) NUMERO_PREGUNTAS) * 100;
+	        System.out.println("Porcentaje de respuestas correctas: " + porcentajeCorrectas + "%");
+
+	        if (porcentajeCorrectas < 75) {
+	            System.out.println("Por favor pide ayuda adicional a tu instructor.");
+	        } else {
+	            System.out.println("¡Felicidades, estás listo para pasar al siguiente nivel!");
+	        }
+	    }
+
+	    private static int seleccionarNivelDificultad() {
+	        System.out.println("Elige el nivel de dificultad:");
+	        System.out.println("1. Números de un dígito");
+	        System.out.println("2. Números de dos dígitos");
+	        // Puedes agregar más niveles de dificultad aquí si lo deseas
+
+	        return scanner.nextInt();
+	    }
+
+	    private static int seleccionarTipoProblema() {
+	        System.out.println("Elige el tipo de problema aritmético:");
+	        System.out.println("1. Suma");
+	      
