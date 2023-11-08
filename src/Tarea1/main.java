@@ -29,14 +29,4 @@ package Tarea1;
 	        int nivelDificultad = seleccionarNivelDificultad();
 	        int tipoProblema = seleccionarTipoProblema();
 
-	        int preguntasCorrectas = 0;
-	        for (int i = 0; i < NUMERO_PREGUNTAS; i++) {
-	            if (realizarPregunta(nivelDificultad, tipoProblema)) {
-	                preguntasCorrectas++;
-	                System.out.println(obtenerResultadoPositivoAlazar());
-	            } else {
-	                System.out.println(obtenerResultadoNegativoAlazar());
-	            }
-	        }
-
 	       
