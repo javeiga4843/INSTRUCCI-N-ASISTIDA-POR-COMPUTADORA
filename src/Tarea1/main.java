@@ -61,4 +61,107 @@ package Tarea1;
 	    private static int seleccionarTipoProblema() {
 	        System.out.println("Elige el tipo de problema aritmético:");
 	        System.out.println("1. Suma");
-	      
+	        System.out.println("2. Resta");
+	        System.out.println("3. Multiplicación");
+	        System.out.println("4. División");
+	        System.out.println("5. Mezcla aleatoria");
+
+	        return scanner.nextInt();
+	    }
+
+	    private static boolean realizarPregunta(int nivelDificultad, int nivelProblema) {
+	        int num1 = mostrarNumeroAlazar(nivelDificultad);
+	        int num2 = mostrarNumeroAlazar(nivelDificultad);
+	        String operador = obtenerOperador(nivelProblema);
+
+	        int resultadoEsperado = obtenerResultado(num1, num2, operador);
+	        int respuestaUsuario;
+
+	        do {
+	            System.out.print("¿Cuánto es " + num1 + " " + operador + " " + num2 + "? ");
+	            respuestaUsuario = scanner.nextInt();
+
+	            if (respuestaUsuario == resultadoEsperado) {
+	                return true;
+	            } else {
+	                System.out.println("Respuesta incorrecta. Intenta nuevamente.");
+	            }
+	        } while (true);
+	    }
+
+	    private static int mostrarNumeroAlazar(int nivelDificultad) {
+	        int maximo;
+
+	        switch (nivelDificultad) {
+	            case 1:
+	                maximo = 10;
+	                break;
+	            case 2:
+	                maximo = 100;
+	                break;
+	            default:
+	                maximo = 10;
+	                break;
+	        }
+
+	        return random.nextInt(maximo) + 1;
+	    }
+
+	    private static String obtenerOperador(int tiponivel) {
+	        switch (tiponivel) {
+	            case 1:
+	                return "+";
+	            case 2:
+	                return "-";
+	            case 3:
+	                return "*";
+	            case 4:
+	                return "/";
+	            case 5:
+	                return obtenerOperadorAlazar();
+	            default:
+	                return "+";
+	        }
+	    }
+
+	    private static String obtenerOperadorAlazar() {
+	        String[] operadores = {"+", "-", "*", "/"};
+	        int indice = random.nextInt(operadores.length);
+	        return operadores[indice];
+	    }
+
+	    private static int obtenerResultado(int num1, int num2, String operador) {
+	        int resultado;
+
+	        switch (operador) {
+	            case "+":
+	                resultado = num1 + num2;
+	                break;
+	            case "-":
+	                resultado = num1 - num2;
+	                break;
+	            case "*":
+	                resultado = num1 * num2;
+	                break;
+	            case "/":
+	                resultado = num1 / num2;
+	                break;
+	            default:
+	                resultado = num1 + num2;
+	                break;
+	        }
+
+	        return resultado;
+	    }
+
+	    private static String obtenerResultadoPositivoAlazar() {
+	        int indice = random.nextInt(RESPUESTAS_POSITIVAS.length);
+	        return RESPUESTAS_POSITIVAS[indice];
+	    }
+
+	    private static String obtenerResultadoNegativoAlazar() {
+	        int indice = random.nextInt(RESPUESTAS_NEGATIVAS.length);
+	        return RESPUESTAS_NEGATIVAS[indice];
+	    }
+	
+}
