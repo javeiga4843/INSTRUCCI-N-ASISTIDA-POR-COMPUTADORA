@@ -22,4 +22,21 @@ package Tarea1;
 	            "No. Sigue intentando."
 	    };
 
-	   
+	    private static final SecureRandom random = new SecureRandom();
+	    private static final Scanner scanner = new Scanner(System.in);
+
+	    public static void main(String[] args) {
+	        int nivelDificultad = seleccionarNivelDificultad();
+	        int tipoProblema = seleccionarTipoProblema();
+
+	        int preguntasCorrectas = 0;
+	        for (int i = 0; i < NUMERO_PREGUNTAS; i++) {
+	            if (realizarPregunta(nivelDificultad, tipoProblema)) {
+	                preguntasCorrectas++;
+	                System.out.println(obtenerResultadoPositivoAlazar());
+	            } else {
+	                System.out.println(obtenerResultadoNegativoAlazar());
+	            }
+	        }
+
+	       
